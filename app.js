@@ -98,6 +98,7 @@ function abrirModal(jogo) {
     document.getElementById('modalDesc').innerText = jogo.short_description;
     document.getElementById('modalDesc2').innerText = jogo.description;
     document.getElementById('modalBuy').href = jogo.game_url;
+    
 }
 
 document.getElementById("close").addEventListener("click", () => {
