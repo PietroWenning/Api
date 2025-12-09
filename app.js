@@ -4,7 +4,7 @@ let avaliacaoAtual = 0;
 const container = document.querySelector('#jogos-container');
 
 
-// ------------------------ CRIAÇÃO DE CARDS ------------------------
+
 
 function criarCard(jogo) {
     const card = document.createElement('div');
@@ -34,7 +34,7 @@ function criarCard(jogo) {
 }
 
 
-// ------------------------ API 1 ------------------------
+
 
 function chamarApi() {
     const url = "https://free-to-play-games-database.p.rapidapi.com/api/games";
@@ -57,8 +57,6 @@ function chamarApi() {
 }
 
 
-// ------------------------ API 2 ------------------------
-
 function chamarOutraApi() {
     const url = 'https://gamerpower.p.rapidapi.com/api/filter?platform=epic-games-store.steam.android&type=game.loot';
 
@@ -79,10 +77,6 @@ function chamarOutraApi() {
         .catch(error => console.error(error));
 }
 
-
-
-// ------------------------ PESQUISA ------------------------
-
 function filtrarJogos() {
     const texto = document.getElementById('pesquisa').value.toLowerCase();
     container.innerHTML = "";
@@ -96,20 +90,13 @@ function filtrarJogos() {
 
 
 
-// ------------------------ MODAL ------------------------
+
 
 function abrirModal(jogo) {
     document.getElementById('modal').style.display = 'flex';
     document.getElementById('modalImg').src = jogo.thumbnail;
     document.getElementById('modalTitle').innerText = jogo.title;
-<<<<<<< HEAD
-    document.getElementById('modalDesc').innerText = jogo.short_description;
-    document.getElementById('modalDesc2').innerText = jogo.description;
-    document.getElementById('modalBuy').href = jogo.game_url;
-    
-=======
 
-    // short_description SEMPRE existe na API 1
     document.getElementById('modalDesc').innerText = jogo.short_description || "";
 
     // description só existe NA SEGUNDA API
@@ -118,11 +105,7 @@ function abrirModal(jogo) {
     document.getElementById('modalBuy').href = jogo.game_url || "#";
 
     carregarEstrelas();
->>>>>>> 91c57f4369a3656aafbf9bb746333e674dd310b6
-}
 
-
-// ------------------------ FECHAR MODAL ------------------------
 
 document.getElementById("close").addEventListener("click", () => {
     document.getElementById('modal').style.display = 'none';
@@ -134,9 +117,9 @@ window.onclick = (e) => {
     }
 };
 
+}
 
 
-// ------------------------ AVALIAÇÃO (ESTRELAS) ------------------------
 
 function carregarEstrelas() {
     const estrelas = document.querySelectorAll('.estrela');
@@ -161,7 +144,7 @@ function atualizarEstrelas() {
 
 
 
-// ------------------------ CARREGAR ------------------------
+
 
 chamarApi();
 chamarOutraApi();
