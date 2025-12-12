@@ -1,11 +1,11 @@
+// Variaveis Globais
+
 let todosOsJogos = [];
 let avaliacaoAtual = 0;
 
 const container = document.querySelector('#jogos-container');
 
-
-
-
+// Função que cria  os Cards
 function criarCard(jogo) {
     const card = document.createElement('div');
     card.classList.add("card");
@@ -34,7 +34,7 @@ function criarCard(jogo) {
 }
 
 
-
+//Api1
 
 function chamarApi() {
     const url = "https://free-to-play-games-database.p.rapidapi.com/api/games";
@@ -56,7 +56,7 @@ function chamarApi() {
         .catch(error => console.error(error));
 }
 
-
+//Api2
 function chamarOutraApi() {
     const url = 'https://gamerpower.p.rapidapi.com/api/filter?platform=epic-games-store.steam.android&type=game.loot';
 
@@ -76,6 +76,7 @@ function chamarOutraApi() {
         })
         .catch(error => console.error(error));
 }
+//Filtragem dos jogos
 
 function filtrarJogos() {
     const texto = document.getElementById('pesquisa').value.toLowerCase();
@@ -90,7 +91,7 @@ function filtrarJogos() {
 
 
 
-
+// Modal com as informações 
 
 function abrirModal(jogo) {
     document.getElementById('modal').style.display = 'flex';
@@ -99,7 +100,6 @@ function abrirModal(jogo) {
 
     document.getElementById('modalDesc').innerText = jogo.short_description || "";
 
-    // description só existe NA SEGUNDA API
     document.getElementById('modalDesc2').innerText = jogo.description || "";
 
     document.getElementById('modalBuy').href = jogo.game_url || "#";
@@ -120,7 +120,7 @@ window.onclick = (e) => {
 }
 
 
-
+// Estrelas
 function carregarEstrelas() {
     const estrelas = document.querySelectorAll('.estrela');
 
@@ -133,6 +133,7 @@ function carregarEstrelas() {
 
     atualizarEstrelas();
 }
+//Avaliação Dos jogos
 
 function atualizarEstrelas() {
     const estrelas = document.querySelectorAll('.estrela');
@@ -141,9 +142,6 @@ function atualizarEstrelas() {
         estrela.textContent = index < avaliacaoAtual ? "★" : "☆";
     });
 }
-
-
-
 
 
 chamarApi();
